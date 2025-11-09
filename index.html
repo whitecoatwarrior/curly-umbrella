@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytFFLl5Lpcl0PInTsVNvypwcdlP7M5YEK5CVQqHxQq3TTPYWkeMH701JpIa5Yd-Rs/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_LR_02 = [
+    {
+        question: "A configuration 'Alpha' transforms to 'Beta' by an inversion of its primary axis. A configuration 'Gamma' possesses a homologous primary axis but is orthogonal to Alpha's. How would Gamma replicate the Beta transformation?",
+        options: [
+            "Invert its own primary axis.",
+            "Rotate 90 degrees then invert its original primary axis.",
+            "Reflect across Alpha's original primary axis.",
+            "Apply Alpha's transformation rule directly to its own orthogonal axis."
+        ],
+        correctAnswer: 0,
+        reasoning: "The transformation rule is defined as an inversion of the *configuration's own primary axis*. Despite Gamma's orthogonal orientation relative to Alpha, applying the same transformation mechanism means identifying and inverting Gamma's intrinsic primary axis, not referencing Alpha's."
+    },
+    {
+        question: "A sequence 'S1' follows a rule 'R' where each element is the sum of its two predecessors. A new sequence 'S2' comprises elements that are the *difference* between their two predecessors in S1. What relation governs the elements of a derived sequence 'S3' where each element is the product of its two predecessors in S2?",
+        options: [
+            "Its elements are products of a sum and a difference.",
+            "Its elements follow a geometric progression only if S1 is linear.",
+            "Its elements are derived from a modified Fibonacci relation.",
+            "Its elements cannot be uniformly related without knowing S1's initial values."
+        ],
+        correctAnswer: 3,
+        reasoning: "The rules define how each sequence is generated from its predecessors or from another sequence. However, these are recursive definitions. To determine a 'relation' (i.e., a pattern or formula) for S3, the initial values for S1 are indispensable. Without them, the elements are merely products of S2's differences, which are themselves differences of S1's sums."
+    },
+    {
+        question: "Condition P enables event Q. Condition R inhibits Q. If P is present and R's presence is uncertain, but R's absence is known to require S, what can be inferred about Q?",
+        options: [
+            "Q is certain to occur.",
+            "Q's occurrence is possible.",
+            "Q's occurrence is impossible.",
+            "Q is contingent upon S's state."
+        ],
+        correctAnswer: 3,
+        reasoning: "P enables Q, while R inhibits Q. The critical uncertainty is R's presence. However, R's *absence* is known to require S. This establishes a dependency: if S is absent, R cannot be absent, meaning R must be present, which would inhibit Q. If S is present, R *could* be absent, allowing Q. Thus, Q's outcome is directly dependent on the state of S, making it contingent upon S's state."
+    },
+    {
+        question: "A stable dynamic system maintains equilibrium through compensatory feedback loops. Introducing an external parameter 'X' disrupts one loop, causing an oscillation. To restore prior stability, what general modification is most efficacious?",
+        options: [
+            "Amplify the original disrupted feedback.",
+            "Introduce a new feedback loop with opposing phase.",
+            "Isolate the disrupted component from the system.",
+            "Re-establish the original feedback's control mechanism."
+        ],
+        correctAnswer: 3,
+        reasoning: "The oscillation arises from a disrupted feedback loop. While introducing a new loop (option 1) is a common stabilization method, the most *efficacious* and fundamental approach to *restore prior stability* often involves directly addressing the root cause within the original system. Re-establishing the original feedback's *control mechanism* directly aims to fix the initial disruption, thus restoring the system's inherent ability to self-regulate, which is a more direct path to 'prior stability' than adding an external compensatory loop."
+    },
+    {
+        question: "A 'cause-vector' 'V1' consistently produces an 'effect-state' 'E1' within 'domain-X'. In 'domain-Y', a 'cause-vector' 'V2' exists, structurally analogous to V1. E1, however, cannot exist in domain-Y. What consequence is most probable from applying V2 in domain-Y?",
+        options: [
+            "A novel, unpredicted emergent effect arises.",
+            "An analogous effect-state E2, adapted to domain-Y.",
+            "A catastrophic systemic collapse.",
+            "V2's influence is nullified by domain-Y's constraints."
+        ],
+        correctAnswer: 0,
+        reasoning: "The cause-vector V2 is analogous to V1, implying it carries a similar potential for causation. However, the original effect E1 *cannot exist* in Domain Y. This fundamental incompatibility, coupled with the systemic potential of V2, makes it most probable that applying V2 will not simply be nullified or lead to an adapted analogy, but rather trigger an entirely new, unpredicted emergent effect that is consistent with the constraints and possibilities unique to Domain Y, representing a fundamental shift in outcome rather than a mere adaptation."
+    },
+    {
+        question: "A complex system of interacting agents exhibits 'Pattern P' under specific environmental 'Condition C'. Removing a subset of agents, 'Subset A', predictably abolishes P. Replacing Subset A with an entirely different 'Subset B', where agents in B possess analogous functional roles but different internal mechanisms, causes 'Pattern Q' to emerge. If Condition C is then slightly varied, how does this affect Q?",
+        options: [
+            "Q is fundamentally unstable.",
+            "Q's properties shift.",
+            "Q transforms to P.",
+            "Q is extinguished."
+        ],
+        correctAnswer: 0,
+        reasoning: "Pattern Q emerged specifically from the interplay of Subset B and Condition C. A 'slight variation' in Condition C fundamentally alters the context in which Q emerged. Given that Q arose from a complex interaction with different internal mechanisms (Subset B), it implies a delicate balance. A slight variation, rather than a mere property shift, suggests that Q's emergent nature is inherently precarious under altered conditions, making it fundamentally unstable."
+    },
+    {
+        question: "Observation 'O' is consistently preceded by 'Event X' and 'Event Y' co-occurring. When X occurs alone, O does not. When Y occurs alone, O does not. If X occurred, but Y was hypothetically prevented, what about O?",
+        options: [
+            "O would manifest partially.",
+            "O's preconditions remain unmet.",
+            "O would be delayed.",
+            "O's emergence is impossible."
+        ],
+        correctAnswer: 3,
+        reasoning: "The premise establishes that Observation O requires the *co-occurrence* of Event X and Event Y. The counterfactual scenario explicitly prevents Y, meaning the joint condition for O is not met. Therefore, O's emergence is impossible, as a necessary condition is missing."
+    },
+    {
+        question: "Relation 'R1' links entities based on shared attributes. Relation 'R2' links entities based on their potential to influence R1. What characterizes an entity if its R2 links become numerous but its R1 links diminish?",
+        options: [
+            "It becomes central to attribute sharing.",
+            "It gains indirect systemic influence.",
+            "Its intrinsic nature transforms.",
+            "Its direct relational relevance is amplified."
+        ],
+        correctAnswer: 1,
+        reasoning: "R1 describes direct shared attributes. R2 describes potential to influence R1. If an entity has many R2 links, it means it has a high potential to influence *how R1 is formed or behaves*. If its R1 links diminish, its direct sharing of attributes lessens. This combination suggests a shift from direct attribute sharing to a role of indirect control or modulation over the attribute-sharing network, hence gaining indirect systemic influence."
+    },
+    {
+        question: "A modular system, 'S', achieves optimal performance via 'Configuration C1'. A critical module, 'M', fails. Replacing M with an 'M-prime' module, functionally equivalent but possessing heightened internal entropy, forces 'S' into 'Configuration C2', where overall performance is preserved but stability is reduced. What long-term outcome is most probable if C2 persists?",
+        options: [
+            "System S reconfigures to C1.",
+            "M-prime's entropy harmonizes.",
+            "System S degrades to instability.",
+            "Performance improves beyond C1."
+        ],
+        correctAnswer: 2,
+        reasoning: "The 'heightened internal entropy' of M-prime, while allowing initial performance preservation, explicitly reduces system stability. Stability is crucial for long-term optimal operation. If a less stable configuration (C2) persists, the underlying increase in entropy and reduced stability will inevitably lead to degradation and eventual failure or breakdown of the system over the long term, rather than spontaneous self-correction or improvement."
+    },
+    {
+        question: "A 'generator G' produces 'output O' when 'input I' is applied. G's internal mechanism 'M' is unknown. A 'modifier K' is introduced, and when I is applied, 'output O-prime' results, different from O. What is inferable about M's interaction with K?",
+        options: [
+            "K directly replaces a part of M.",
+            "M is bypassed by K completely.",
+            "M's operation is altered by K.",
+            "K acts on O after M produces it."
+        ],
+        correctAnswer: 2,
+        reasoning: "The generator G, with its unknown mechanism M, initially produces O from I. The introduction of modifier K results in O-prime when I is applied. The change in output (from O to O-prime) strongly suggests that K influences or interacts with the internal mechanism M that processes input I. If K acted *after* M produced O, then O would first appear, then be modified to O-prime, which isn't described. If M were bypassed, it wouldn't be 'altered'. The most direct inference is that K alters M's operational process."
+    },
+    {
+        question: "A specific 'property P' is observed in 'category A' entities under 'condition X'. 'Category B' entities are structurally analogous to A, but exist under 'condition Y'. If P's manifestation is known to be deeply tied to 'factor F', ubiquitous in X but absent in Y, what is the most likely status of P in B?",
+        options: [
+            "P manifests in a modified form.",
+            "P is entirely absent.",
+            "P develops via an alternative mechanism.",
+            "P's emergence is delayed."
+        ],
+        correctAnswer: 1,
+        reasoning: "Property P's manifestation is explicitly stated as 'deeply tied to factor F', which is 'ubiquitous in X but absent in Y'. This establishes F as a necessary condition for P as observed. Without factor F in Condition Y, Property P cannot manifest in Category B entities in the same way, or at all, making its complete absence the most logical outcome, despite structural analogy."
+    },
+    {
+        question: "A population of agents 'A' interacting under 'Rule R' generates 'Systemic Behavior S'. If agent 'A-prime', identical to A but with a minor modification to its self-preservation instinct, is introduced, S vanishes, replaced by 'Chaos'. If A-prime is removed, S returns. What is the minimal conclusion regarding A-prime's influence?",
+        options: [
+            "A-prime's modification reveals system's criticality.",
+            "Systemic Behavior S is highly sensitive to individual agent parameters.",
+            "A-prime directly corrupts Rule R.",
+            "Chaos is an inevitable state of the system."
+        ],
+        correctAnswer: 0,
+        reasoning: "The disappearance of 'Systemic Behavior S' and emergence of 'Chaos' due to a *minor* modification in one agent type, with a reversal upon its removal, indicates that the system's overall stable behavior operates near a critical point. This minor change pushes the system beyond a threshold where its stable collective behavior collapses, revealing a criticality in its organization rather than just a general sensitivity."
+    },
+    {
+        question: "A 'macro-level' phenomenon 'M' is an aggregation of 'micro-level' interactions 'm'. A 'perturbation P' directly alters a fundamental aspect of 'm'. What is the most profound and immediate consequence for M?",
+        options: [
+            "M exhibits delayed instability.",
+            "M's foundational structure is redefined.",
+            "M's observable behavior shifts.",
+            "M's statistical properties are modified."
+        ],
+        correctAnswer: 2,
+        reasoning: "If the fundamental aspect of 'micro-level' interactions 'm' is directly altered by 'perturbation P', then the 'macro-level' phenomenon 'M', which is an aggregation of these 'm' interactions, will immediately reflect this change in its observable behavior. While 'M's foundational structure might be redefined over time, and statistical properties modified, the most direct and immediate consequence of altered constituent behavior is a shift in the aggregate's observable behavior."
+    },
+    {
+        question: "A 'generator' 'G' transforms 'input A' into 'output B'. An 'inverse generator' 'G-prime' transforms 'output B' into 'input A'. If G-prime is applied to an 'input C' that is structurally analogous to B but not derived from G, what outcome is most logically implied?",
+        options: [
+            "G-prime's operation is ambiguous.",
+            "G-prime produces an analogous output to A.",
+            "A modified version of G-prime emerges.",
+            "The system enters an undefined state."
+        ],
+        correctAnswer: 0,
+        reasoning: "G-prime is defined as the inverse of G, explicitly transforming *output B* to *input A*. While C is structurally analogous to B, it is *not derived from G*. This fundamental difference means G-prime's specific inverse mechanism might not be fully applicable or predictably behave with C. The lack of direct derivation from G introduces a critical ambiguity about G-prime's ability to process C in a reliably inverse manner, making its operation ambiguous rather than predictably analogous."
+    },
+    {
+        question: "Event 'E' results from 'Process P', which is itself activated by 'Condition C'. Intervention 'I' reliably prevents E. If I targets a subprocess *within* P, what is the most specific inference about I's effect on C?",
+        options: [
+            "C is nullified.",
+            "C's effect on P is attenuated.",
+            "C remains active but its causal chain is broken.",
+            "C is rendered irrelevant."
+        ],
+        correctAnswer: 2,
+        reasoning: "Intervention I prevents E by targeting a subprocess *within* P. Since P is activated by C, C still occurs and still attempts to activate P. However, because I acts within P to prevent E, it means C's causal influence, while initiated, cannot propagate fully through P to E. Therefore, C remains active, but its causal chain *leading to E* is broken at the point of intervention within P. C itself is not nullified, attenuated, or irrelevant in its *own* occurrence."
+    },
+    {
+        question: "A predictive model 'M' accurately forecasts 'Outcome O' given 'Scenario S'. M is based entirely on 'historical data H'. A 'Novel Scenario N' emerges, sharing no direct analogues in H but exhibiting similar statistical distributions for its fundamental components as specific aggregate aspects of S. What is M's most probable performance on N?",
+        options: [
+            "M will be entirely inaccurate.",
+            "M's predictions will be robust.",
+            "M's predictions will be partially relevant.",
+            "M will indicate no prediction possible."
+        ],
+        correctAnswer: 2,
+        reasoning: "Model M is accurate for Scenario S and built on historical data H. Novel Scenario N has no direct analogues in H, but its *fundamental components* have statistical distributions similar to *aggregate aspects* of S. This suggests that while M might not capture specific details, it could still identify and apply underlying statistical regularities and relationships present in S (and H) that are also present in N's aggregate components. Therefore, M's predictions would likely be partially relevant, capturing some aspects but missing others."
+    },
+    {
+        question: "A 'functional unit F' performs 'operation O' within 'System X'. In 'System Y', F is absent, but 'Component C' and 'Component D' interact in a novel way to produce a macro-effect indistinguishable from O. If 'perturbation P' reliably disrupts O in X, what is P's most probable effect in Y?",
+        options: [
+            "No effect on the macro-effect.",
+            "A complete cessation of the macro-effect.",
+            "A modified version of the macro-effect.",
+            "P would induce System Y's collapse."
+        ],
+        correctAnswer: 0,
+        reasoning: "Perturbation P disrupts operation O by targeting functional unit F in System X. In System Y, the same macro-effect O is produced by a *different mechanism* (interaction of C and D), and F is absent. Since P's disruptive action is specific to F, and F is not present in Y, P would not have a direct mechanism to disrupt the equivalent macro-effect in Y. Therefore, it's most probable that P would have no effect on the macro-effect in Y."
+    },
+    {
+        question: "All observed 'Entities E1' possess 'Property P1'. No observed 'Entities E2' possess P1. A newly discovered 'Entity E3' is confirmed to be structurally identical to E1 but exists in a novel environment. Can E3 be inferred to possess P1?",
+        options: [
+            "Yes, due to structural identity.",
+            "No, environmental context is determinant.",
+            "Only if the novel environment is analogous.",
+            "Only if P1 is not environmentally dependent."
+        ],
+        correctAnswer: 3,
+        reasoning: "The core of the problem is about inferring a property based on structural identity versus environmental context. E3 is structurally identical to E1, which has P1. This supports the presence of P1. However, E3 is in a *novel environment*. If P1's presence is not affected by environmental changes, then structural identity is sufficient. But if P1 is environmentally dependent, then the novel environment could prevent its manifestation. Therefore, P1 can only be inferred if it is known to be independent of environmental factors."
+    },
+    {
+        question: "A 'system S' operates under 'fundamental rules R'. An 'emergent constraint C' arises from S's complex interactions, limiting permissible behaviors. If a new 'component K' is integrated, explicitly designed to *violate* C through direct action, what is the most likely immediate outcome?",
+        options: [
+            "C is immediately nullified.",
+            "System S adapts to accommodate K's action.",
+            "K's action is suppressed by R.",
+            "System S experiences internal conflict and disruption."
+        ],
+        correctAnswer: 3,
+        reasoning: "Constraint C is *emergent* from the system's complex interactions under fundamental rules R. This means C is not an externally imposed rule but a consequence of R's operation. If component K is designed to violate C, it is effectively designed to act in a way that is fundamentally inconsistent with the stable behavior permitted by R within S. This immediate contradiction between K's action and the system's emergent stability would most likely result in internal conflict and disruption, rather than immediate nullification of C or adaptation."
+    },
+    {
+        question: "A 'systemic attribute A' is maintained by a 'positive feedback loop PFL' and a 'negative feedback loop NFL', balancing each other. If PFL's strength is significantly increased, but NFL's sensitivity is proportionally reduced, what is the most probable trajectory of A?",
+        options: [
+            "A maintains its equilibrium.",
+            "A oscillates with increasing amplitude.",
+            "A drifts towards an extreme value.",
+            "A stabilizes at a new, lower equilibrium."
+        ],
+        correctAnswer: 2,
+        reasoning: "Positive feedback loops amplify deviations, while negative feedback loops stabilize the system by counteracting deviations. If the positive feedback loop's strength increases while the negative feedback loop's sensitivity *proportionally reduces* (meaning it becomes less effective at correcting), the balance is fundamentally skewed towards amplification. This would cause systemic attribute A to drift uncontrollably towards an extreme value, as the forces pushing it away from equilibrium are now stronger than the forces trying to pull it back."
+    },
+    {
+        question: "A statistical 'correlation C' exists between 'Event X' and 'Outcome Y' within 'Environment E1'. In 'Environment E2', X still occurs, Y still occurs, but C is absent. What is the most robust inference about X's relationship to Y in E1?",
+        options: [
+            "X is a direct cause of Y.",
+            "X and Y share a common cause unique to E1.",
+            "E1 contains a mediating factor enabling the correlation.",
+            "The correlation in E1 is spurious."
+        ],
+        correctAnswer: 2,
+        reasoning: "The presence of correlation C in E1 and its absence in E2, even when X and Y individually occur in both, strongly suggests that the environment E1 provides a mediating or enabling factor that allows X and Y to correlate. If X were a direct cause, the correlation should persist across environments (assuming X and Y themselves are not changed). If it were spurious, it might not consistently exist in E1. A common cause or an enabling factor unique to E1 best explains the context-dependent correlation."
+    },
+    {
+        question: "A 'micro-level interaction MI' between two particles yields 'Property P'. A 'macro-level structure MS' is composed of millions of these particles, and MS exhibits 'Behavior B'. If MI is fundamentally altered, what is the most direct consequence for MS?",
+        options: [
+            "P is negated, leading to B's collapse.",
+            "MS retains B due to emergent properties.",
+            "The underlying mechanics of B are altered.",
+            "MS develops an entirely new behavior."
+        ],
+        correctAnswer: 2,
+        reasoning: "Behavior B in MS is a consequence of millions of micro-level interactions MI. If MI is fundamentally altered, the foundational processes that give rise to B are changed. This directly means that the underlying mechanics by which B is generated at the macro-level are altered. Whether B collapses, is retained, or leads to new behavior are subsequent possibilities, but the immediate and most direct consequence is the alteration of its generative mechanics."
+    },
+    {
+        question: "Element 'A' influences 'Element B'. Element 'B' influences 'Element C'. Element 'C' recursively influences 'Element A'. This forms a stable 'Cycle Z'. A 'mutation M' occurs in B, causing its influence on C to become erratic. What is the ultimate fate of A's influence on B?",
+        options: [
+            "Strengthened.",
+            "Unaffected.",
+            "Weakened.",
+            "Inverted."
+        ],
+        correctAnswer: 2,
+        reasoning: "The system forms a stable cycle: A -> B -> C -> A. A mutation in B makes its influence on C erratic. This erratic influence will propagate to C, making C's subsequent influence on A erratic. Consequently, A's influence on B, which is part of this now destabilized cycle, will also become erratic, meaning its stable strength is effectively weakened."
+    },
+    {
+        question: "A 'domain-specific heuristic H' guides 'agent X' to 'optimal outcome O' by exploiting 'latent relation L'. If X operates in a 'novel domain N' where L is absent but an 'analogous relation L-prime' exists, what must X do to achieve O?",
+        options: [
+            "Replicate H's actions exactly.",
+            "Adapt H to exploit L-prime.",
+            "Invent a completely new heuristic.",
+            "Discover a new optimal outcome."
+        ],
+        correctAnswer: 1,
+        reasoning: "The heuristic H works by exploiting latent relation L. In a novel domain N, L is absent but an *analogous relation L-prime* exists. To achieve the *same optimal outcome O*, agent X must adapt its heuristic (H) to recognize and effectively exploit L-prime, as the fundamental principle of the heuristic (exploiting the domain's latent structure) remains valid, even if the specific structural relation has changed."
+    },
+    {
+        question: "A 'closed system S' exhibits a cyclical 'process P'. Introducing an 'external factor F' causes P to become linear. Removing F restores P's cyclical nature. If S is conceptually expanded to 'System S-prime' to *include* F as an internal component, what best describes F's role within S-prime?",
+        options: [
+            "A necessary condition for linearity.",
+            "A catalyst for cyclicality.",
+            "An inherent emergent property.",
+            "A state-dependent parameter."
+        ],
+        correctAnswer: 0,
+        reasoning: "When F is external, it transforms P from cyclical to linear. When F is *included* as an internal component of S-prime, its presence directly dictates the linearity of P. Thus, F acts as a necessary internal condition for P to exhibit linearity within the new, expanded system S-prime; without it, the system would revert to cyclicality."
+    },
+    {
+        question: "A 'problem-space P1' is solved by 'algorithm A1', which relies on identifying 'structural pattern S1'. A 'problem-space P2' is proven isomorphic to P1. What is the most direct inference about A1's applicability to P2?",
+        options: [
+            "A1 applies directly to P2.",
+            "A1 requires minor modification for P2.",
+            "A different algorithm is needed for P2.",
+            "P2 lacks S1, rendering A1 useless."
+        ],
+        correctAnswer: 0,
+        reasoning: "Isomorphism between P1 and P2 means they possess the same underlying structure and relational properties, despite potentially different surface representations. If A1 solves P1 by identifying 'structural pattern S1', then S1 must also exist in P2 due to isomorphism. Therefore, A1, relying on S1, should apply directly and without modification to P2."
+    },
+    {
+        question: "A 'system S' uses 'Mechanism M' to convert 'Input I' to 'Output O'. A fraction of O is fed back as a 'modulator F' to I, amplifying its next iteration. If M is made more efficient, what is the counterintuitive result?",
+        options: [
+            "O increases proportionally.",
+            "O stabilizes at a lower level.",
+            "I's amplification rate reduces.",
+            "The system oscillates uncontrollably."
+        ],
+        correctAnswer: 3,
+        reasoning: "The system involves a positive feedback loop. Making Mechanism M 'more efficient' means it produces a greater output O for a given input I, or processes I more quickly. This amplifies the feedback modulator F, which in turn amplifies the next iteration of input I. In a system balanced by positive and negative feedbacks (implied by the notion of a 'stable balance' in previous questions using similar constructs), an isolated increase in efficiency within a positive feedback component often leads to over-amplification, causing the system to overshoot its stable points, resulting in uncontrolled oscillations or runaway behavior, which is counterintuitive if one expects efficiency to always lead to better stability or higher, stable output."
+    },
+    {
+        question: "A 'collection C' of independent 'units U' exhibits 'Property P' when the density of U exceeds a 'critical threshold T'. Below T, P is absent. If C is organized into a 'hierarchical structure H' but the number of units U remains below T, what is the most probable outcome for P?",
+        options: [
+            "P emerges in a modified form.",
+            "P is entirely absent.",
+            "H facilitates P's emergence.",
+            "H inhibits P's emergence."
+        ],
+        correctAnswer: 1,
+        reasoning: "Property P is defined as emerging *only* when the density of units U exceeds a critical threshold T. The hierarchical organization H, while changing the structure, does not inherently alter the fundamental requirement of density. Since the number of units remains *below* T, the critical condition for P's emergence is not met. Therefore, P remains entirely absent, as its prerequisite is not satisfied."
+    },
+    {
+        question: "A 'robust network R' maintains 'function F' despite significant 'local perturbations L' due to redundant pathways. A novel 'intervention I' targets a 'global control node G', which coordinates pathway selection. If I disables G, but local perturbations L continue, what is the most likely consequence for F?",
+        options: [
+            "F persists with reduced efficiency.",
+            "F immediately ceases.",
+            "R dynamically reconfigures its pathways.",
+            "F becomes unpredictable and intermittent."
+        ],
+        correctAnswer: 3,
+        reasoning: "A robust network with redundant pathways relies on global control for *efficient* pathway selection. If this control node is disabled, the system still has pathways, but their coordination is lost. Local perturbations would then lead to unpredictable and intermittent function, as the system struggles to adapt efficiently. Therefore, F becomes unpredictable and intermittent."
+    },
+    {
+        question: "A 'rule R' states: 'If X, then Y'. This rule operates within 'Context C1', where X is always observed to precede Y. In 'Context C2', Y is observed without X. What is the most precise conclusion about R in C2?",
+        options: [
+            "R is fundamentally false.",
+            "R is insufficient to explain Y.",
+            "X is not a necessary condition for Y in C2.",
+            "Y has an alternative cause in C2."
+        ],
+        correctAnswer: 2,
+        reasoning: "The rule 'If X, then Y' means X is a sufficient condition for Y within C1. However, observing 'Y without X' in C2 directly refutes the idea that X is a *necessary* condition for Y in C2. It doesn't mean R is false (R is about what happens *if* X occurs), but it specifically removes the necessity of X for Y's occurrence in that context. While Y might have an alternative cause, the most precise logical inference about R's implications in C2, given the observation, is the lack of necessity of X."
+    },
+    {
+        question: "A 'transformation T' maps 'Set A' to 'Set B'. A 'meta-transformation MT' maps T itself to 'Transformation T-prime', which maps 'Set B' to 'Set A'. What is the most accurate characterization of T-prime?",
+        options: [
+            "T-prime is a permutation of T.",
+            "T-prime is the inverse of T.",
+            "T-prime is an extension of T.",
+            "T-prime is orthogonal to T."
+        ],
+        correctAnswer: 1,
+        reasoning: "Transformation T maps elements from Set A to Set B. Transformation T-prime, derived via MT, maps elements from Set B back to Set A. This reversal of direction and domain/codomain implies that T-prime functions as the inverse of T, undoing the mapping performed by T."
+    },
+    {
+        question: "A 'pattern P' is observed in 'data set D1', consisting of elements 'E'. P dictates a specific 'relation R' between consecutive E. A new 'data set D2' is identical to D1 except for one 'element E-prime', which deviates from R. How does this impact the perception of P?",
+        options: [
+            "P is disproven.",
+            "P is partially confirmed.",
+            "P becomes a statistical anomaly.",
+            "P remains valid as a general tendency."
+        ],
+        correctAnswer: 3,
+        reasoning: "A single deviation (E-prime) from 'relation R' within 'pattern P' does not automatically invalidate P as a whole, especially if P was observed across a large dataset. Instead, it suggests that P might represent a general tendency, a rule with exceptions, or a statistical regularity rather than an absolute, unyielding law. Therefore, P remains valid as a general tendency, even with a specific known deviation."
+    },
+    {
+        question: "A 'complex phenomenon CP' arises from the interaction of 'simple components SC'. The behavior of CP cannot be fully predicted by knowing all properties of individual SC. If a 'reductionist analysis RA' fully describes all SC properties and pairwise interactions, what is RA's limitation regarding CP?",
+        options: [
+            "RA lacks sufficient computational power.",
+            "RA overlooks hidden variables.",
+            "RA fails to capture emergent properties.",
+            "RA's premises are flawed."
+        ],
+        correctAnswer: 2,
+        reasoning: "The inability to fully predict 'Complex Phenomenon CP' from the exhaustive description of 'Simple Components SC' and their pairwise interactions, combined with the fact that CP 'arises from the interaction,' is the classic definition of emergent properties. Reductionist analysis, by breaking things down to their smallest parts and interactions, often fails to capture these higher-level properties that only manifest from the system as a whole."
+    },
+    {
+        question: "Event 'X' reliably causes 'Event Y'. Event 'Y' reliably causes 'Event Z'. If Z is prevented, what is the most certain inference?",
+        options: [
+            "Y is also prevented.",
+            "X did not occur.",
+            "The causal link between Y and Z is broken.",
+            "An unknown factor intervened."
+        ],
+        correctAnswer: 0,
+        reasoning: "The premise states 'Y reliably causes Z'. This implies Y is a necessary condition for Z (among other potential interpretations, 'reliably causes' often suggests strong necessity). If Z is prevented, and Y reliably causes Z, then the most direct inference is that Y itself was prevented from occurring or from enacting its causal potential, thereby preventing Z."
+    },
+    {
+        question: "An 'adaptive system A' responds to 'stimulus S' by adjusting 'internal state I' to maintain 'equilibrium E'. A 'novel stimulus N', unlike any previous S, causes A to enter a 'transient chaotic state C' before eventually settling into a new 'quasi-equilibrium Q'. What can be inferred about A's adaptation to N?",
+        options: [
+            "A's internal state I failed to adapt.",
+            "A developed a new adaptive mechanism.",
+            "N exploited a weakness in A's equilibrium.",
+            "A's original adaptive mechanisms were insufficient for N."
+        ],
+        correctAnswer: 3,
+        reasoning: "The system's initial response to 'novel stimulus N' was 'transient chaotic state C', indicating that its existing adaptive mechanisms for 'stimulus S' were unable to immediately cope with N. The eventual settling into a 'new quasi-equilibrium Q' suggests some form of adaptation occurred, but the initial chaotic response strongly points to the original mechanisms being insufficient for directly handling the novel stimulus."
+    },
+    {
+        question: "An 'influence X' directly affects 'variable Y'. 'Variable Z' is correlated with Y but not directly affected by X. If Z is consistently 'maximized', how does this affect X's observed influence on Y?",
+        options: [
+            "X's influence is amplified.",
+            "X's influence is masked.",
+            "X's influence is nullified.",
+            "X's influence remains unchanged."
+        ],
+        correctAnswer: 1,
+        reasoning: "Influence X directly affects variable Y. Variable Z is correlated with Y. If Z is consistently maximized, it means Y is being strongly driven by its correlation with Z to a particular state. This strong, consistent external push on Y (via Z) would make it difficult to observe or discern the specific, direct influence of X on Y, effectively masking it within the dominant effect of Z."
+    },
+    {
+        question: "The presence of 'Condition A' is a necessary but not sufficient prerequisite for 'Event B'. 'Condition C' is a sufficient but not necessary trigger for B. If B does not occur, what is the most definitive conclusion?",
+        options: [
+            "Condition A was absent.",
+            "Condition C did not occur.",
+            "Both A and C were absent.",
+            "Neither A nor C could sufficiently trigger B."
+        ],
+        correctAnswer: 0,
+        reasoning: "Condition A is stated as a *necessary* prerequisite for Event B. This means B cannot occur without A. Therefore, if B does not occur, it is definitively concluded that Condition A was absent. Condition C's sufficiency and non-necessity mean its absence doesn't prevent other (unspecified) sufficient conditions from causing B, and its presence alone isn't relevant if A is missing."
+    },
+    {
+        question: "A 'component X' performs 'function F' in 'system S1'. In 'system S2', X is replaced by 'component Y', which performs an 'operation O' structurally different from F, yet S2 retains 'systemic property P', identical to P in S1. What is the most precise conclusion about O's relation to F?",
+        options: [
+            "O is an analog of F.",
+            "O is a precursor to F.",
+            "O is functionally equivalent to F.",
+            "O is irrelevant to F."
+        ],
+        correctAnswer: 2,
+        reasoning: "Despite their structural differences ('operation O' versus 'function F'), if component Y's operation O allows System S2 to retain the *identical systemic property P* as System S1 (which used F), then O is performing the same *role* or achieving the same *outcome* at the system level. Therefore, O is functionally equivalent to F within the context of maintaining systemic property P."
+    },
+    {
+        question: "A 'network N' is composed of 'nodes' and 'links'. 'Node M' is critical: if M fails, N's 'overall coherence C' collapses. A 'distributed mechanism D' is introduced, allowing other nodes to temporarily assume M's functions upon its failure. If M then fails permanently, what is the most likely initial state of C?",
+        options: [
+            "C is maintained indefinitely.",
+            "C is partially preserved for a duration.",
+            "C experiences immediate, total collapse.",
+            "C transforms into an entirely new coherence."
+        ],
+        correctAnswer: 1,
+        reasoning: "Initially, M's failure causes total collapse of coherence C. However, 'distributed mechanism D' specifically allows *temporary* assumption of M's functions. If M fails *permanently*, D would kick in. This means C would not suffer immediate, total collapse, but rather would be partially preserved for a duration, as D is temporary, suggesting its capacity or lifespan is limited."
+    },
+    {
+        question: "A 'solution S' effectively resolves 'problem P1' within 'environment E1'. Problem P2 is structurally identical to P1. If S fails to resolve P2 in 'environment E2', what is the most critical implication about E1 and E2?",
+        options: [
+            "E1 and E2 possess dissimilar fundamental laws.",
+            "E2 lacks a necessary condition present in E1.",
+            "S is inherently context-dependent.",
+            "P2 has an unknown confounding factor."
+        ],
+        correctAnswer: 1,
+        reasoning: "Given that Problem P2 is 'structurally identical' to P1, the failure of solution S implies that the difference must lie in the environments. The most critical implication is that Environment E2 *lacks a necessary condition* that was present in E1, and which S required to be effective. This is more specific than merely 'dissimilar laws' or 'S being context-dependent', and accounts for the structural identity of the problems themselves."
+    },
+    {
+        question: "A 'system state S' is regulated by a feedback loop 'L' involving 'Component X' and 'Component Y'. X's output influences Y's input, and Y's output influences X's input. A 'perturbation P' alters the *gain* of X's output, making it less sensitive to Y. What is the most probable impact on S's stability?",
+        options: [
+            "S's stability is enhanced.",
+            "S becomes more resistant to external shocks.",
+            "S's ability to maintain its regulated state is compromised.",
+            "S settles into a new, but rigid, equilibrium."
+        ],
+        correctAnswer: 2,
+        reasoning: "If X becomes less sensitive to Y, the feedback loop L is weakened or made less responsive. This compromises the system's ability to regulate state S effectively, leading to reduced stability. Therefore, S's ability to maintain its regulated state is compromised."
+    },
+    {
+        question: "A 'set of entities E' are related by 'relation R', observed as (X, R, Y). A 'new entity Z' is introduced. Z has features of X and Y, but R has not been observed for Z. What is the weakest valid inference about Z's relation to R?",
+        options: [
+            "Z is not subject to R.",
+            "Z's relation to R is undetermined.",
+            "Z participates in R via X-like features.",
+            "Z participates in R via Y-like features."
+        ],
+        correctAnswer: 1,
+        reasoning: "The absence of observation for 'new entity Z' with respect to 'relation R' means there is insufficient data to make a definitive claim. Therefore, the weakest but valid inference is simply that Z's relation to R is currently undetermined. Any other option makes a stronger, more specific claim (e.g., 'not subject', 'participates') which is not directly supported by the lack of observation."
+    },
+    {
+        question: "Process 'Alpha' necessitates 'Catalyst C'. If Alpha is observed, what can be asserted if C was hypothetically absent?",
+        options: [
+            "Alpha would still occur.",
+            "Alpha would manifest differently.",
+            "The observation of Alpha is contradictory.",
+            "Another catalyst must have been present."
+        ],
+        correctAnswer: 2,
+        reasoning: "If Alpha *necessitates* C, and Alpha is *observed*, then C *must* have been present. To then hypothesize C's absence makes the observation of Alpha a contradiction to the stated necessity."
+    },
+    {
+        question: "A 'biological system B' performs 'function F' through 'interconnected pathway P'. If P is completely re-engineered into 'pathway P-prime', comprising entirely different components but maintaining F, what does this imply for B's evolutionary adaptability?",
+        options: [
+            "B's function F is highly constrained.",
+            "B possesses deep structural redundancy.",
+            "B's underlying principles are conserved.",
+            "B exhibits significant functional plasticity."
+        ],
+        correctAnswer: 3,
+        reasoning: "If a complex function can be maintained through an *entirely different* set of components and pathway (P-prime), it signifies the system's high capacity to adapt and find alternative means to achieve the same end, demonstrating functional plasticity."
+    },
+    {
+        question: "A 'stimulus S' produces 'response R' in a 'system Y' linearly up to 'threshold T'. Beyond T, S causes an 'inverse response R-prime'. If Y is composed of 'sub-systems S1 and S2', and S1 processes S linearly while S2 processes S with an exponential inverse effect beyond T, what is most likely the actual mechanism of R-prime?",
+        options: [
+            "S1's linear effect is overwhelmed.",
+            "S2's exponential inverse effect dominates.",
+            "A new emergent property arises from S1/S2 interaction.",
+            "Y's capacity for linear processing is exhausted."
+        ],
+        correctAnswer: 1,
+        reasoning: "The system Y exhibits an inverse response R-prime beyond threshold T. We are told S1 processes S linearly, while S2 processes S with an *exponential inverse effect* beyond T. The most direct and likely explanation for the overall inverse response R-prime in Y is that the powerful exponential inverse effect of S2 dominates and overrides any continued linear processing by S1, causing the system-wide inverse behavior."
+    },
+    {
+        question: "A 'micro-level phenomenon M' scales up to a 'macro-level emergent property P'. If M's fundamental interaction rule is conserved but its scale of application is massively increased, what is the most robust prediction for P?",
+        options: [
+            "P transforms into a different emergent property.",
+            "P intensifies but retains its core nature.",
+            "P dissipates due to scale complexity.",
+            "P's emergence is delayed indefinitely."
+        ],
+        correctAnswer: 1,
+        reasoning: "If the fundamental interaction rule of the micro-level phenomenon M is conserved, and the scale of application is massively increased, the emergent property P, which arises from these interactions, would logically intensify or amplify. However, because the underlying generative rule remains the same, P's core nature would be expected to persist, indicating a scaling of the property rather than its fundamental transformation or dissipation. This suggests a form of scale-invariance for the property's intrinsic character."
+    },
+    {
+        question: "An 'inference engine IE' reliably deduces 'conclusion C' from 'premises P' under 'paradigm A'. If IE operates under 'paradigm B', which selectively invalidates certain implicit assumptions underlying P, what is the most probable impact on C's validity?",
+        options: [
+            "C is rendered inherently unsound.",
+            "C's validity becomes conditional.",
+            "C remains deductively robust.",
+            "C's probabilistic certainty diminishes."
+        ],
+        correctAnswer: 0,
+        reasoning: "The reliability of the inference engine in Paradigm A rests on specific implicit assumptions underpinning Premises P. If Paradigm B *selectively invalidates* these fundamental assumptions, then the logical foundation for deriving Conclusion C from P is compromised at its core. This renders the conclusion inherently unsound within Paradigm B, as the premises themselves are no longer considered valid in the way they were in Paradigm A."
+    },
+    {
+        question: "A 'self-organizing system S' spontaneously generates 'global order O' from 'local interactions I'. A 'localized intervention L' temporarily disrupts a subset of I. What is the most likely initial long-term impact on O after L ceases?",
+        options: [
+            "O recovers quickly and fully.",
+            "O undergoes permanent structural alteration.",
+            "O re-establishes, but with residual instability.",
+            "O requires external re-initiation."
+        ],
+        correctAnswer: 3,
+        reasoning: "Self-organizing systems are characterized by their ability to generate order from local interactions, implying a degree of resilience. A *temporary, localized* disruption to a *subset* of these interactions, after which the intervention ceases, suggests that the fundamental self-organizing mechanisms are still in place. Therefore, the global order O would likely re-establish itself, but the disruption could leave behind residual effects or 'memory' in the system, leading to a period of instability before full recovery, or a slightly altered, less robust re-establishment."
+    },
+    {
+        question: "A 'system S' exhibits 'behavior B1' below 'threshold T1' and 'behavior B2' above T1. A 'parameter P' is known to influence T1. If P is subtly varied, causing T1 to *fluctuate* slightly, what is the most critical consequence for S's overall character?",
+        options: [
+            "S's fundamental nature is redefined.",
+            "S becomes predictably intermittent between B1 and B2.",
+            "S experiences increased unpredictability at boundaries.",
+            "S develops an entirely new behavior B3."
+        ],
+        correctAnswer: 0,
+        reasoning: "The system's overall character is defined by its switch between B1 and B2 at threshold T1. If parameter P causes T1 to *fluctuate*, the precise point at which the system transitions between these behaviors becomes uncertain and variable. This directly translates to increased unpredictability specifically at the boundary regions where S's behavior would normally reliably switch from B1 to B2, making the system's character less stable and more volatile around its critical switch point."
+    },
+    {
+        question: "A 'relational schema R' connects 'elements X, Y, Z' in 'domain D1'. In 'domain D2', X and Y are present, but Z is fundamentally incompatible. A 'surrogate S' exists in D2, sharing X's primary functional attribute but also possessing a unique inhibiting property. If R is applied to X, Y, and S in D2, what is the most probable outcome?",
+        options: [
+            "R completely fails due to Z's absence.",
+            "R establishes a modified connection between X, Y, and S.",
+            "R selectively ignores S's inhibiting property.",
+            "X, Y, and S form a novel, unpredicted schema."
+        ],
+        correctAnswer: 3,
+        reasoning: "Relational schema R connected X, Y, Z. In D2, Z is incompatible. A surrogate S exists, sharing X's functional attribute but with a *unique inhibiting property*. If R is applied, it will attempt to establish connections based on its original logic, but S's inhibiting property will actively interfere with a straightforward adaptation or a simple modified connection. This conflict between R's attempt to establish connections and S's inhibiting property will most likely lead to the formation of a novel, unpredictable relational schema, as the system tries to resolve the conflicting requirements, rather than R completely failing or selectively ignoring the crucial inhibiting property."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Logical Reasoning ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-LR-02';
+let quizData = quizData_WCW_LR_02;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-LR-02', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-LR-02', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-LR-02', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_LR_02;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_LR_02;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_LR_02[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_LR_02.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
